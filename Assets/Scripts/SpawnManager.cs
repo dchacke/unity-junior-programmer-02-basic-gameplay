@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
     {
         int index = Random.Range(0, prefabs.Length);
         GameObject prefab = prefabs[index];
-        Vector3 spawnPosition = new Vector3(Random.Range(-20, 20), 0, 12);
+        Vector3 spawnPosition = new Vector3(Random.Range(-20, 20), 0, 20);
 
         Instantiate(prefab, spawnPosition, prefab.transform.rotation);
     }

@@ -36,5 +36,4 @@ public class SpawnManagerX : MonoBehaviour
             yield return wait;
         }
     }
-
 }

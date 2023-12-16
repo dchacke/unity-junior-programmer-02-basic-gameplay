@@ -25,8 +25,45 @@ public class SpawnManager : MonoBehaviour
     {
         int index = Random.Range(0, prefabs.Length);
         GameObject prefab = prefabs[index];
-        Vector3 spawnPosition = new Vector3(Random.Range(-7, 7), 0, 20);
 
-        Instantiate(prefab, spawnPosition, prefab.transform.rotation);
+        Vector3 spawnPosition;
+        Quaternion rotation;
+
+        if (isAggressive())
+        {
+            prefab.tag = "Aggressive";
+
+            if (spawnLeft())
+            {
+                spawnPosition = new Vector3(-20, 0, Random.Range(0, 20));
+
+                // As per https://forum.unity.com/threads/how-to-adjust-my-prefab-to-face-the-correct-direction-when-instantiated.780023/#post-5192006
+                rotation = Quaternion.LookRotation(Vector3.right);
+            }
+            else
+            {
+                spawnPosition = new Vector3(20, 0, Random.Range(0, 20));
+                rotation = Quaternion.LookRotation(Vector3.left);
+            }
+        }
+        else
+        {
+            spawnPosition = new Vector3(Random.Range(-7, 7), 0, 20);
+            rotation = prefab.transform.rotation;
+        }
+
+        Instantiate(prefab, spawnPosition, rotation);
+    }
+
+    // Make a spawned animal aggressive with 50% chance
+    private bool isAggressive()
+    {
+        return Random.Range(0, 2) == 0 ? true : false;
+    }
+
+    // Make aggressive animal spawn on the left with 50% chance
+    private bool spawnLeft()
+    {
+        return Random.Range(0, 2) == 0 ? true : false;
     }
 }

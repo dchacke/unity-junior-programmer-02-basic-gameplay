@@ -54,11 +54,4 @@ public class PlayerController : MonoBehaviour
             Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
     }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("AggressiveAnimal"))
-        {
-            Debug.Log("Game Over from aggressive!");
-        }
-    }
 }

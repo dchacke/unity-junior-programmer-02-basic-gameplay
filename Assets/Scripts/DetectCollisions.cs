@@ -18,10 +18,14 @@ public class DetectCollisions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Animal") || other.CompareTag("AggressiveAnimal"))
+        if (gameObject.CompareTag("Pizza") && (other.CompareTag("Animal") || other.CompareTag("AggressiveAnimal")))
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
+        }
+        else if (gameObject.CompareTag("Player") && other.CompareTag("AggressiveAnimal"))
+        {
+            Debug.Log("Game Over from aggressive!");
         }
     }
 }

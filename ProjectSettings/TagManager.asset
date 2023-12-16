@@ -7,6 +7,7 @@ TagManager:
   - Dog
   - Animal
   - AggressiveAnimal
+  - Pizza
   layers:
   - Default
   - TransparentFX

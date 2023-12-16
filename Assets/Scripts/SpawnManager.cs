@@ -29,10 +29,10 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnPosition;
         Quaternion rotation;
 
-        if (isAggressive())
-        {
-            prefab.tag = "Aggressive";
+        bool aggressive = isAggressive();
 
+        if (aggressive)
+        {
             if (spawnLeft())
             {
                 spawnPosition = new Vector3(-20, 0, Random.Range(0, 20));
@@ -52,7 +52,12 @@ public class SpawnManager : MonoBehaviour
             rotation = prefab.transform.rotation;
         }
 
-        Instantiate(prefab, spawnPosition, rotation);
+        GameObject animal = Instantiate(prefab, spawnPosition, rotation);
+
+        if (aggressive)
+        {
+            animal.gameObject.tag = "AggressiveAnimal";
+        }
     }
 
     // Make a spawned animal aggressive with 50% chance

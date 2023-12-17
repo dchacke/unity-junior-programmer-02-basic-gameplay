@@ -20,12 +20,14 @@ public class DetectCollisions : MonoBehaviour
     {
         if (gameObject.CompareTag("Pizza") && (other.CompareTag("Animal") || other.CompareTag("AggressiveAnimal")))
         {
+            PointsManager.incScore();
+
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
         else if (gameObject.CompareTag("Player") && other.CompareTag("AggressiveAnimal"))
         {
-            Debug.Log("Game Over from aggressive!");
+            PointsManager.decLives();
         }
     }
 }

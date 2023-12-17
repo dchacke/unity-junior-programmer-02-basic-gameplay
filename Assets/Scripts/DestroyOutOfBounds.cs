@@ -24,7 +24,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         }
 
         if (transform.position.z < lowerBound) {
-            Debug.Log("Game over!");
+            PointsManager.decLives();
         }
     }
 }
